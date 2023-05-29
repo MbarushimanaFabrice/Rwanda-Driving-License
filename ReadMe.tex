@@ -1,0 +1,2 @@
+create table Candidate(CandidateNationalId varchar(112) PRIMARY key,FirstName varchar(122),LastName varchar(122),Gender varchar(155),DOB varchar(64),ExamDate varchar(142),PhoneNumber varchar(122) UNIQUE key);
+create TABLE Grade(CandidateNationalId varchar(122),foreign key(CandidateNationalId)  REFERENCES candidate(CandidateNationalId),LicenseExamCategory varchar(122),ObtainedMarks varchar(177),Decision varchar(122));
