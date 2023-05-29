@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+
+if(isset($_SESSION['myusername'])){
+
+
 include_once "connection.php";
 ?>
 <!DOCTYPE html>
@@ -32,3 +38,8 @@ include_once "connection.php";
 	</div>
 </body>
 </html>
+<?php
+}else{
+	header("location:../../index.php");
+}
+?>

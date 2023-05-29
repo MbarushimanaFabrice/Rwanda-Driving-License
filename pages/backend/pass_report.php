@@ -1,4 +1,8 @@
 <?php
+
+ 
+
+
 include_once "connection.php";
 ?>
 <!DOCTYPE html>
@@ -16,6 +20,8 @@ include_once "connection.php";
 <body>
 	<?php
 	include_once "report.php";
+	if(isset($_SESSION['myusername'])){
+
 
 ?>
  
@@ -53,3 +59,9 @@ while($row=mysqli_fetch_array($select)){
 	</div>
 </body>
 </html>
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+?>

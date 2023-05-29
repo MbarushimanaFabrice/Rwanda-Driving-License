@@ -1,4 +1,11 @@
 <?php
+
+
+session_start();
+
+if(isset($_SESSION['myusername'])){
+
+
 include_once "connection.php";
 ?>
 <!DOCTYPE html>
@@ -20,7 +27,7 @@ include_once "connection.php";
 		<li><a href="register_candidates.php">Register Candidates</a></li>
 		<li ><a href="List_of_all_candidated.php">List of Candidates</a></li>
 		 <li ><a href="exam.php">Exam</a></li>
-		 <li ><a href="pass.php">Passed</a></li>
+		 <li ><a href="passed.php">Passed</a></li>
 		<li class="register_candidates"><a href="failed.php">Failed</a></li>
 		<li><a href="report.php">Report</a></li>
 	</ul>
@@ -69,3 +76,11 @@ while($row=mysqli_fetch_array($select)){
 	</div>
 </body>
 </html>
+
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+
+?>

@@ -1,4 +1,11 @@
 <?php
+
+
+session_start();
+
+if(isset($_SESSION['myusername'])){
+
+
 include_once "connection.php";
 ?>
 <!DOCTYPE html>
@@ -89,3 +96,10 @@ while($row=mysqli_fetch_array($select)){
 	</div>
 </body>
 </html>
+
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+?>

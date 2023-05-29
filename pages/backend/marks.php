@@ -1,4 +1,10 @@
 <?php
+
+session_start();
+
+if(isset($_SESSION['myusername'])){
+
+
 include_once "connection.php";
 $update=$_GET['delete'];
  $select=mysqli_query($conn,"SELECT * FROM `candidate` WHERE PhoneNumber='$update'");
@@ -78,4 +84,12 @@ if(isset($_POST['submit'])){
 		echo "error".$insert."<br>".$conn->error;
 	 }
 }
+?>
+
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+
 ?>

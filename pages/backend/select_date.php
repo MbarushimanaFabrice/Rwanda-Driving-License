@@ -1,5 +1,9 @@
 <?php
 include_once "connection.php";
+
+ 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,20 +29,22 @@ include_once "connection.php";
 			font-size: 21px;
 			line-height: 25px;
 		}
-		input [type="submit"]{
-		}
+	 
 	</style>
 </head>
 
 <body>
-	<?php include_once "exam_date_report.php" ?>
+	<?php include_once "exam_date_report.php";
+	if(isset($_SESSION['myusername'])){
+
+	?>
 	<div class="selectdate">
 		<center>
-			<form action="" method="post">
+			<form action="" method="get">
 			<p>From</p>
-			<input type="date"><br>
+			<input type="date" name="d1" required><br>
 			<p>To</p>
-			<input type="date"><br><br>
+			<input type="date" name="d2" required><br><br>
 			<input style="border: solid 1px rgba(203, 81, 255, 0.799); cursor: pointer;" type="submit">
 			</form>
 
@@ -48,3 +54,9 @@ include_once "connection.php";
 </body>
 
 </html>
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+?>

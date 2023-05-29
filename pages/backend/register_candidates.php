@@ -1,4 +1,6 @@
 <?php
+
+
 include_once "connection.php";
 ?>
 <!DOCTYPE html>
@@ -29,6 +31,8 @@ include_once "connection.php";
 		<div class="addnew">
 			<?php
 			include "addcandindate.php";
+			if(isset($_SESSION['myusername'])){
+
 			?>
 		
 		</div>
@@ -78,3 +82,9 @@ while($row=mysqli_fetch_array($select)){
 	</div>
 </body>
 </html>
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+?>

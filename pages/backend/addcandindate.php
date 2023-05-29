@@ -1,3 +1,9 @@
+<?php
+session_start();
+if($_SESSION['myusername']){
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,3 +38,12 @@
 	</div>
 </body>
 </html>
+
+
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+
+?>

@@ -1,5 +1,10 @@
 <?php
+include_once "connection.php";
 session_start();
+if(isset($_SESSION['myusername'])){
+?>
+
+<?php
 $username=$_SESSION['myusername'];
 if(isset($username)){
 ?>
@@ -32,7 +37,7 @@ if(isset($username)){
 
        
         <div class="icon">
-            <img src="../image/login.png" alt="">
+         <a href="logout.php"><img src="../image/login.png" alt="" title="Log out"></a>
         </div>
         <div class="sidebar">
 
@@ -40,25 +45,42 @@ if(isset($username)){
 
         <div class="part1">
             <div class="card1">
+                <!-- tottal candidattes -->
+            <?php
+            $select=mysqli_query($conn,"SELECT COUNT(*) AS counts FROM `candidate`");
+            $row=mysqli_fetch_array($select);           
+            ?>
                 <h2>Total Candidates</h2>
-                <h3 class="viewed">12</h3>
+                <h3 class="viewed"><?php echo $row['counts'] ?></h3>
             </div>
+            <!-- passed candidates -->
             <div class="card1">
                 <h2>Passed Candidates</h2>
-                <h3 class="viewed">12</h3>
+                <?php
+                 $select2=mysqli_query($conn,"SELECT COUNT(*) AS count FROM `grade` WHERE Decision='Pass' ");
+                 $row2=mysqli_fetch_array($select2);      
+                 ?>
+                    <h3 class="viewed"><?php echo $row2['count'] ?></h3>
+
+                 
+        <h3 class="viewed"></h3>
+
             </div>
         </div>
         
         <div class="part1">
             <div class="card1">
                 <h2>Failed Candidates</h2>
-                <h3 class="viewed">12</h3>
+                <?php
+                $select3=mysqli_query($conn,"SELECT COUNT(*)newcount FROM `grade` WHERE Decision='Failed'");
+                $row3=mysqli_fetch_array($select3);
+               
+                ?>
+
+                <h3 class="viewed"><?php  echo $row3['newcount']; ?></h3>
 
             </div>
-            <div class="card1">
-                <h2>Failed Removed</h2>
-                <h3 class="viewed">12</h3>
-            </div>
+             
         </div>
     </div>
     </div>
@@ -71,6 +93,13 @@ if(isset($username)){
 }
 
 
+
+
+?>
+<?php
+}else{
+    header("location:../../index.php");
+}
 
 
 ?>

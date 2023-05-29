@@ -1,4 +1,5 @@
 <?php
+ 
 include_once "connection.php";
 $date=$_GET['date'];
 $select=mysqli_query($conn,"SELECT * FROM `candidate` WHERE ExamDate='$date'");
@@ -13,13 +14,31 @@ $select=mysqli_query($conn,"SELECT * FROM `candidate` WHERE ExamDate='$date'");
 	<title>Document</title>
 	<link rel="stylesheet" href="../css/register_candidates.css?v=1.8">
 	<link rel="stylesheet" href="../css/List_of_all_candidated.css">
+	<style>
+		.messsage{
+			width: 211px;
+			padding: 21px;
+			border-radius:17px;
+			background-color: greenyellow;
+			color: white;
+		}
+	</style>
 </head>
 <body>
-<?php include_once "exam_date_report.php"?>
+<?php include_once "exam_date_report.php";
+if(isset($_SESSION['myusername'])){
+
+?>
 
 <div class="displayed">
 		<table>
-			<tr>
+			
+<?php
+$select=mysqli_query($conn,"SELECT * FROM `candidate` WHERE ExamDate='$date'");
+$countmim=mysqli_query($conn,"SELECT COUNT(*) AS counts FROM `candidate` WHERE ExamDate='$date'");
+if(mysqli_num_rows($countmim)>0){
+	echo '
+	<tr>
 				<th>National Id</th>
 				<th>First Name</th>
 				<th>Last Name</th>
@@ -28,12 +47,8 @@ $select=mysqli_query($conn,"SELECT * FROM `candidate` WHERE ExamDate='$date'");
 				<th>Exam Date</th>
 				<th>Phone Number </th>
 			</tr>
-
-<?php
-$select=mysqli_query($conn,"SELECT * FROM `candidate` WHERE ExamDate='$date'");
-if(mysqli_num_rows($select)>0){
-	
-while($row=mysqli_fetch_array($select)){
+	';
+ while($row=mysqli_fetch_array($select)){
 	$nationalid=$row['CandidateNationalId'];
 	$FirstName=$row['FirstName'];
 	$LastName=$row['LastName'];
@@ -55,11 +70,17 @@ while($row=mysqli_fetch_array($select)){
 	";
 }
 }else{
-	echo ""
-}
+		echo "<p class='messsage'>No candidate found</p>";
+} 
 ?>
- 
-		</table>
+</table>
 	
 </body>
 </html>
+
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+?>

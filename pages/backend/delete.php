@@ -5,13 +5,10 @@ $remove=$_GET['delete'];
  
 // $deletion="";
 
-$deletion=mysqli_query($conn,"DELETE FROM `candidate` WHERE PhoneNumber='$remove'");
-if($deletion){
-	header("location:List_of_all_candidated.php");
+$deletion="DELETE FROM `candidate` WHERE PhoneNumber='$remove'";
+if($conn->query($deletion)){
+	echo "data deleted";
 }else{
-	echo "something wrong";
+	echo "error".$deletion."<br>".$conn->error;
 }
-
-
-
 ?>

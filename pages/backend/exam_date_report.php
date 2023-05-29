@@ -1,4 +1,8 @@
 <?php
+
+ 
+
+
 include_once "connection.php";
 ?>
 <!DOCTYPE html>
@@ -58,7 +62,10 @@ color: white;
 
 </head>
 <body>
-	<?php include_once "report.php";?>
+	<?php include_once "report.php";
+	if(isset($_SESSION['myusername'])){
+
+	?>
 	
 	<div class="report newreport">
 		<form action="dail_report.php" method="get">
@@ -71,3 +78,10 @@ color: white;
 </div>
 </body>
 </html>
+
+<?php
+}else{
+	header("location:../../index.php");
+}
+
+?>
