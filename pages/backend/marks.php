@@ -46,7 +46,7 @@ while($row=mysqli_fetch_array($select)){
 			<label for="LastName">Last Name :</label><br>
 			<input type="text"  name="lname" value="<?php  echo "$LastName" ?>" readonly required><br>
 			<label for="category">Category :</label><br>
-  			<select name="category" id="">
+  			<select name="category" id="" required>
 				<option value="">Select Category</option>
 				<option value="A">A</option>
 				<option value="B">B</option>
@@ -56,7 +56,7 @@ while($row=mysqli_fetch_array($select)){
 				<option value="F">F</option>
 			</select><br>
 			<label for="Marks">Add Marks :</label><br>
-  			<input type="text" name="Marks"><br>
+  			<input type="text" name="Marks" required><br>
  			<button type="submit" name="submit">Add candidate</button>
 		</form>
 	</div>

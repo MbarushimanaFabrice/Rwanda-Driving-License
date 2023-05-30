@@ -26,7 +26,7 @@ include_once "connection.php";
 		<li><a href="register_candidates.php">Register Candidates</a></li>
 		<li ><a href="List_of_all_candidated.php">List of Candidates</a></li>
 		 <li class="register_candidates"><a href="exam.php">Exam</a></li>
-		 <li><a href="pass.php">Passed</a></li>
+		 <li><a href="passed.php">Passed</a></li>
 		<li><a href="failed.php">Failed</a></li>
 		<li><a href="report.php">Report</a></li>
 	</ul>
