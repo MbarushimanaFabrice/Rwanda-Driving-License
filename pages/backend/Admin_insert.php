@@ -1,8 +1,6 @@
 <?php
-session_start();
-
-if($_SESSION['myusername']){
-
+ 
+ 
 
 include_once "connection.php";
 if(isset($_POST['submit'])){
@@ -26,10 +24,6 @@ if($dbname===$name){
 }   
 ?>
 
-<?php
-}else{
-	header("location:../../index.php");
-}
-
+ 
 
 ?>
